@@ -248,3 +248,70 @@ footer {
 ::backdrop {
   background: rgba(0,0,0,0.4);
 }
+/* === 響應式設計開始 === */
+
+/* === 手機尺寸 (max-width: 768px) ===
+   當螢幕寬度小於或等於 768px 時套用。
+   通常代表手機或小型平板。
+   調整字體、導覽列方向、容器間距等。
+*/
+@media (max-width: 768px) {
+
+  body {
+    font-size: 14px;     /* 字體縮小一點，符合手機畫面 */
+    line-height: 1.6;    /* 調整行距，提升閱讀性 */
+  }
+
+  .nav {
+    display: flex;
+    flex-direction: column;  /* 導覽列從橫排變直排 */
+    padding: 8px 0;          /* 上下間距縮小 */
+  }
+
+  .nav__link {
+    margin: 6px 0;           /* 每個導覽項目上下留空，避免擠在一起 */
+  }
+
+  .container {
+    width: 95%;              /* 主內容區放寬，幾乎滿版 */
+    padding: 20px;           /* 內距縮小，畫面更緊湊 */
+  }
+
+  .gallery {
+    grid-template-columns: 1fr;   /* 圖片牆改為單欄顯示 */
+  }
+
+  .hero {
+    padding: 40px 10px;      /* Hero 區內距縮小 */
+  }
+
+  .hero__content h1 {
+    font-size: 1.6rem;       /* 主標題文字變小以符合手機畫面 */
+  }
+
+  img,
+  .dialog-img {
+    width: 100%;             /* 圖片寬度自動填滿容器 */
+    height: auto;            /* 高度自動等比例縮放，避免變形 */
+  }
+}
+
+/* === 平板尺寸 (min-width: 769px) and (max-width: 1024px) ===
+   當螢幕寬度介於 769px～1024px（例如 iPad、平板電腦）時套用。
+   主要調整圖片牆為兩欄。
+*/
+@media (min-width: 769px) and (max-width: 1024px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);  /* 兩欄圖片排列 */
+  }
+}
+
+/* === 桌機尺寸 (min-width: 1025px) ===
+   螢幕寬度大於 1025px（桌上型電腦或大型螢幕）時套用。
+   保持原本三欄設計。
+*/
+@media (min-width: 1025px) {
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);  /* 三欄圖片排列 */
+  }
+}
